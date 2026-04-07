@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Registrar Paciente - WarmLife</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <div class="form-container">
+        <div class="form-header">
+            <img src="https://cdn-icons-png.flaticon.com/512/2864/2864348.png" width="36" alt="logo">
+            <h2>WarmLife<span>+</span></h2>
+        </div>
+        <h3>Registrar Paciente</h3>
+        <form action="insertar_dato.php" method="post">
+            <label>Nombre completo:</label>
+            <input type="text" name="nombre" placeholder="Ej. María Torres" required/>
+            <label>Cédula:</label>
+            <input type="text" name="cedula" placeholder="Número de identificación" required/>
+            <label>Tipo de Cáncer:</label>
+            <select name="tipo_cancer" required>
+                <option value="" disabled selected>Seleccionar...</option>
+                <option>Mama</option><option>Pulmón</option><option>Colon</option>
+                <option>Próstata</option><option>Leucemia</option><option>Linfoma</option>
+                <option>Páncreas</option><option>Otro</option>
+            </select>
+            <label>Estado del paciente:</label>
+            <select name="estado_paciente" required>
+                <option value="" disabled selected>Seleccionar...</option>
+                <option>En tratamiento</option><option>Alta médica</option>
+                <option>Seguimiento</option><option>Urgencia</option>
+            </select>
+            <br/>
+            <input type="submit" value="Registrar"/>
+            <a href="Gestion.html" class="btn-volver">← Volver al menú</a>
+        </form>
+    </div>
+</body>
+</html>
