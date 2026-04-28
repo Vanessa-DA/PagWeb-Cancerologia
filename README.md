@@ -1,69 +1,77 @@
-# PagWeb-Cancerologia
-# Sistema Web de Gestión de Pacientes Oncológicos
+# 🏥 Sistema Web de Gestión de Pacientes Oncológicos
 
-Aplicación web desarrollada en **PHP + PostgreSQL** que permite gestionar pacientes mediante un sistema CRUD completo (Crear, Leer, Actualizar y Eliminar).
+![PHP](https://img.shields.io/badge/PHP-Backend-blue?logo=php)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-Database-blue?logo=postgresql)
+![HTML](https://img.shields.io/badge/HTML-Structure-orange?logo=html5)
+![CSS](https://img.shields.io/badge/CSS-Styles-blue?logo=css3)
+![Status](https://img.shields.io/badge/Status-En%20desarrollo-yellow)
+![GitHub repo size](https://img.shields.io/github/repo-size/Vanessa-DA/PagWeb-Cancerologia)
+![GitHub last commit](https://img.shields.io/github/last-commit/Vanessa-DA/PagWeb-Cancerologia)
 
 ---
 
-## Objetivo del Proyecto
+##  Descripción
 
-Este proyecto fue desarrollado como parte del aprendizaje en **bases de datos**, con el propósito de:
+Aplicación web desarrollada en **PHP y PostgreSQL** que permite gestionar pacientes mediante un sistema CRUD completo (Crear, Leer, Actualizar y Eliminar).
 
-* Comprender la conexión entre PHP y PostgreSQL
+El sistema está diseñado para comprender la conexión a bases de datos y la manipulación de información desde una interfaz web.
+
+---
+
+##  Objetivo del Proyecto
+
+* Aprender a conectar PHP con PostgreSQL
 * Implementar operaciones CRUD
-* Manipular datos desde formularios web
-* Entender el flujo completo entre frontend y backend
+* Manipular datos mediante formularios
+* Comprender el flujo entre frontend y backend
+* Desarrollar buenas prácticas de organización de código
 
 ---
 
 ## ⚙️ Tecnologías Utilizadas
 
 * **PHP** → lógica del servidor
-* **PostgreSQL** → base de datos
-* **HTML** → estructura de la interfaz
-* **CSS** → estilos (personalizados)
+* **PostgreSQL** → base de datos relacional
+* **HTML** → estructura de la aplicación
+* **CSS** → diseño e interfaz
 
 ---
 
-##  Funcionalidades Principales
+##  Funcionalidades
 
-✔ Registro de pacientes
-✔ Visualización de datos (tabla)
-✔ Edición de información
-✔ Eliminación de registros
-✔ Conexión a base de datos PostgreSQL
-✔ Manejo de formularios con método POST
+✔️ Crear pacientes
+✔️ Visualizar registros
+✔️ Editar información
+✔️ Eliminar pacientes
+✔️ Buscar por nombre
+✔️ Conexión a PostgreSQL
 
 ---
 
 ##  Operaciones CRUD
 
-El sistema implementa las 4 operaciones fundamentales:
-
-* **CREATE** → Inserción de nuevos pacientes mediante formularios
-* **READ** → Consulta y visualización de registros con `SELECT`
-* **UPDATE** → Modificación de datos mediante `UPDATE`
+* **CREATE** → Inserción de pacientes mediante formularios
+* **READ** → Consulta con `SELECT` y visualización en tabla
+* **UPDATE** → Modificación de datos con `UPDATE`
 * **DELETE** → Eliminación de registros con `DELETE`
 
-Todas las operaciones se ejecutan utilizando la función `pg_query()` de PHP.
+Las consultas se ejecutan utilizando `pg_query()`.
 
 ---
 
 ## 🔌 Conexión a la Base de Datos
 
-La conexión se realiza mediante:
-
 ```php
-pg_connect("host=localhost port=5432 dbname=hospital user=postgres password=****");
+pg_connect("host=localhost port=5432 dbname=cancerologia user=postgres password=****");
 ```
 
-Esta conexión se reutiliza en todo el proyecto mediante `include`.
+La conexión se centraliza en un archivo y se reutiliza con `include`.
 
 ---
 
-##  Estructura de la Base de Datos
+##  Base de Datos
 
-Tabla principal: `pacientes`
+### Tabla: `pacientes`
 
 | Campo       | Tipo        |
 | ----------- | ----------- |
@@ -77,38 +85,76 @@ Tabla principal: `pacientes`
 
 ##  Estructura del Proyecto
 
-```
+```bash
 PagWeb-Cancerologia/
-│── db/
+│
+├── db/
 │   └── conexion.php
 │
-│── pacientes/
+├── pacientes/
 │   ├── crear.php
 │   ├── insertar.php
 │   ├── editar.php
 │   ├── actualizar.php
 │   ├── eliminar.php
+│   ├── buscar.php
+│   └── listar.php
 │
-│── index.php
-│── README.md
+├── css/
+│   └── estilos.css
+│
+├── index.php
+├── cancerologia.sql
+└── README.md
 ```
 
 ---
 
-##  Flujo de Funcionamiento
+##  Flujo del Sistema
 
-1. El usuario interactúa con formularios HTML
+1. El usuario ingresa datos en formularios HTML
 2. Los datos se envían mediante método POST
-3. PHP recibe los datos (`$_POST`)
-4. Se ejecutan consultas SQL (`pg_query`)
-5. PostgreSQL procesa la información
-6. Se muestran resultados o se redirige al usuario
+3. PHP recibe la información (`$_POST`)
+4. Se ejecutan consultas SQL con `pg_query()`
+5. PostgreSQL procesa los datos
+6. Se actualiza la interfaz o se redirige
+
+---
+
+## 🚀 Instalación y Uso
+
+1. Clonar el repositorio:
+
+```bash
+git clone https://github.com/Vanessa-DA/PagWeb-Cancerologia.git
+```
+
+2. Crear la base de datos en PostgreSQL y ejecutar:
+
+```sql
+cancerologia.sql
+```
+
+3. Configurar credenciales en:
+
+```bash
+db/conexion.php
+```
+
+4. Ejecutar en servidor local (XAMPP, Laragon, etc.)
+
+---
+
+## 🔐 Seguridad
+
+* El archivo de conexión puede excluirse usando `.gitignore`
+* Se recomienda no subir credenciales reales
 
 ---
 
 ## 🚀 Posibles Mejoras
 
-* 🔍 Implementar buscador de pacientes
+* 🔍 Búsqueda avanzada
 * 👤 Sistema de autenticación (login)
 * 📊 Dashboard visual
 * 🔗 Relación con tabla de tratamientos
@@ -120,20 +166,12 @@ PagWeb-Cancerologia/
 
 **Vanessa**
 
-Estudiante en formación con enfoque en desarrollo web y bases de datos.
+Estudiante en formación en desarrollo web y bases de datos.
 
 ---
 
-## Notas
+##  Conclusión
 
-* Archivo de conexión protegido mediante `.gitignore`
-* Proyecto enfocado en aprendizaje y práctica académica
-* Código estructurado para facilitar modificaciones
-
----
-
-## Conclusión
-
-Este proyecto demuestra la implementación práctica de un sistema CRUD conectado a una base de datos PostgreSQL, aplicando conceptos fundamentales de desarrollo backend y manejo de datos.
+Este proyecto demuestra la implementación práctica de un sistema CRUD conectado a PostgreSQL, aplicando conceptos fundamentales de backend, manejo de datos y organización de código.
 
 ---
